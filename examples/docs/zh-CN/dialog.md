@@ -133,13 +133,19 @@ Dialog 组件的内容可以是任意的，甚至可以是表格或表单，下�
 <template>
   <el-button type="text" @click="outerVisible = true">点击打开外层 Dialog</el-button>
   
-  <el-dialog title="外层 Dialog" :visible.sync="outerVisible">
+  <el-dialog title="外层 Dialog" :header="false" :visible.sync="outerVisible">
     <el-dialog
       width="30%"
       title="内层 Dialog"
       :visible.sync="innerVisible"
       append-to-body>
     </el-dialog>
+    <div style="border:#0f0 1px solid; line-height:38px">
+    Body Conten<br>
+    添加：:header="false" 属性<br>
+    当不使用 slot="footer"时，<br>
+    实现了容器最大化
+    </div>
     <div slot="footer" class="dialog-footer">
       <el-button @click="outerVisible = false">取 消</el-button>
       <el-button type="primary" @click="innerVisible = true">打开内层 Dialog</el-button>
